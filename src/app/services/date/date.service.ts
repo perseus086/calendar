@@ -59,4 +59,22 @@ export class DateService {
     return daysOfTheMonth;
   }
 
+  getDaysForCalendar(date: Date): Date[][] {
+
+    const calendarDays = [];
+    const initialDay = this.getFirstDayOfMonthOnCalendar(date);
+    const finalDay = this.getLastDayOfMonthOnCalendar(date);
+    const daysOfMonth = this.getAllDaysOfMonth(initialDay, finalDay);
+
+    while (daysOfMonth.length > 0) {
+      calendarDays.push(daysOfMonth.splice(0, 7));
+    }
+
+    return calendarDays;
+  }
+
+  datesAreEqual(date1: Date, date2: Date): boolean {
+    return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear();
+  }
+
 }

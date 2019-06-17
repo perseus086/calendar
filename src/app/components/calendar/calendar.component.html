@@ -1,0 +1,33 @@
+<div class="calendar-month-selector">
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" [formControl]="date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker
+      #picker
+      startView="multi-year"
+      (yearSelected)="chosenYearHandler($event)"
+      (monthSelected)="chosenMonthHandler($event, picker)"
+    >
+    </mat-datepicker>
+  </mat-form-field>
+</div>
+
+<div class="calendar">
+  <table class="calendar-table">
+    <thead class="calendar-table-header">
+      <tr><th *ngFor="let day of weekdayLabels" [attr.aria-label]="day">{{ day }}</th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of Arr(rows).fill(1); let i = index;">
+        <td *ngFor="let item of cellItems[i]; let j = index;">
+          <app-day-item
+            [date]="item"
+            [hasMonth]="!!(i===0 && j===0)"
+            [actualDate]="actualDate"
+          >
+          </app-day-item>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
