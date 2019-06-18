@@ -13,15 +13,17 @@ import { ReminderListService } from 'src/app/services';
 export class EditReminderDialogComponent implements OnInit {
 
   reminder: Reminder;
+  isToday: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<EditReminderDialogComponent>,
     private reminderListService: ReminderListService,
-    @Inject(MAT_DIALOG_DATA) public data: Reminder
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit() {
-    this.reminder = this.data;
+    this.reminder = this.data.reminder;
+    this.isToday = this.data.isToday;
   }
 
   onFormDiscard() {

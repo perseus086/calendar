@@ -38,4 +38,10 @@ export class ReminderListService {
     );
   }
 
+  deleteMultipleReminders(reminderIds: string[]) {
+    reminderIds.forEach(eachReminderId => {
+      this.deleteReminder(eachReminderId);
+    });
+  }
+
 }

@@ -11,3 +11,10 @@
   [reminders]="reminders"
 >
 </app-reminder-list>
+<div
+  *ngIf="reminders.length"
+  class="delete-button-container"
+  (click)="openDeleteAllDialog()"
+>
+  <mat-icon aria-hidden="false" aria-label="Delete all">delete</mat-icon>
+</div>

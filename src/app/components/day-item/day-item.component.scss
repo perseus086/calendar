@@ -26,3 +26,18 @@
     background-color: rgba(247, 221, 104, 0.534);
   }
 }
+
+.delete-button-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+
+  .mat-icon {
+    height: 16px;
+    width: 16px;
+  }
+  .material-icons {
+    font-size: 16px;
+  }
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit, NgModule, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, NgModule, Output, EventEmitter, Input, OnDestroy } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {
@@ -10,8 +10,13 @@ import {
   MatSelectModule,
   MatButtonModule
 } from '@angular/material';
-import { Color, Reminder } from 'src/app/models';
+import { Color, Reminder, Weather } from 'src/app/models';
 import { ColorService, DateService, UtilitiesService } from 'src/app/services';
+import { debounceTime, takeUntil, map } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { ForecastService } from 'src/app/services/forecast/forecast.service';
+import { HttpClient } from '@angular/common/http';
+import { WeatherModule } from '../weather/weather.component';
 
 const { compose, required, maxLength } = Validators;
 
@@ -20,26 +25,33 @@ const { compose, required, maxLength } = Validators;
   templateUrl: './reminder-form.component.html',
   styleUrls: ['./reminder-form.component.scss']
 })
-export class ReminderFormComponent implements OnInit {
+export class ReminderFormComponent implements OnInit, OnDestroy {
+
 
   @Input() reminder: Reminder;
+  @Input() isToday: boolean;
   @Output() formSuccess = new EventEmitter<Reminder>();
   @Output() formDiscard = new EventEmitter();
   @Output() deleteReminder = new EventEmitter<string>();
 
   reminderForm: FormGroup;
   colors: Color[];
+  weather: Weather;
+
+  onDestroy$ = new Subject();
 
   constructor(
     private formBuilder: FormBuilder,
     private colorService: ColorService,
     private dateService: DateService,
-    private utilitiesService: UtilitiesService
+    private utilitiesService: UtilitiesService,
+    private forecastService: ForecastService
   ) { }
 
   ngOnInit() {
     this.colors = this.colorService.getColorList();
     this.initForm();
+    this.subscribeToCity();
   }
 
   initForm() {
@@ -50,6 +62,30 @@ export class ReminderFormComponent implements OnInit {
       city: [this.reminder.city, required],
       color: [this.reminder.color, required]
     });
+  }
+
+  subscribeToCity() {
+    if (this.isToday) {
+      this.formCity.valueChanges
+        .pipe(
+          takeUntil(this.onDestroy$),
+          debounceTime(500)
+        )
+        .subscribe(
+          city => {
+            if (city) {
+              this.forecastService.getTodayWeatherByCity(city)
+                .pipe(
+                  map(weatherResponse => weatherResponse.weather[0])
+                )
+                .subscribe(
+                  (resp) => { this.weather = resp; },
+                  (error) => { this.weather = null; }
+                );
+            }
+          }
+        );
+    }
   }
 
   save() {
@@ -73,6 +109,11 @@ export class ReminderFormComponent implements OnInit {
     this.deleteReminder.emit(this.reminder.id);
   }
 
+  ngOnDestroy(): void {
+    this.onDestroy$.next(true);
+    this.onDestroy$.complete();
+  }
+
 
   get formText() { return this.reminderForm.get('text'); }
   get formDay() { return this.reminderForm.get('day'); }
@@ -91,7 +132,8 @@ export class ReminderFormComponent implements OnInit {
     MatDatepickerModule,
     MatOptionModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    WeatherModule
   ],
   exports: [
     ReminderFormComponent

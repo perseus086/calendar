@@ -60,6 +60,11 @@
     City is required
   </div>
 
+  <app-weather *ngIf="weather"
+    [weather]="weather"
+  >
+  </app-weather>
+
   <mat-form-field>
     <mat-select formControlName="color" placeholder="Color">
       <mat-option *ngFor="let colorItem of colors" [value]="colorItem.value">

@@ -1,5 +1,6 @@
 <app-reminder-form
   [reminder]="reminder"
+  [isToday]="isToday"
   (formSuccess)="onFormSuccess($event)"
   (formDiscard)="onFormDiscard($event)"
   (deleteReminder)="onDeleteReminder($event)"

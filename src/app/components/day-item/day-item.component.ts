@@ -2,11 +2,16 @@ import { Component, OnInit, NgModule, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DayItem, Reminder } from 'src/app/models';
 import { DateItemService, ReminderListService } from 'src/app/services';
-import { MatDialog, MatDialogModule } from '@angular/material';
+import { MatDialog, MatDialogModule, MatIconModule } from '@angular/material';
 import { EditReminderDialogComponent, EditReminderDialogModule } from '../edit-reminder-dialog/edit-reminder-dialog.component';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ReminderListModule } from '../reminder-list/reminder-list.component';
+import {
+  DeleteAllRemidersDialogComponent,
+  DeleteAllRemidersDialogModule
+} from '../delete-all-remiders-dialog/delete-all-remiders-dialog.component';
+
 
 @Component({
   selector: 'app-day-item',
@@ -57,10 +62,24 @@ export class DayItemComponent implements OnInit {
       minWidth: '360px',
       panelClass: 'calendar-dialog',
       data: {
-        text: null,
-        date: this.dayItem.date,
-        color: null,
-        city: null
+        reminder: {
+          text: null,
+          date: this.dayItem.date,
+          color: null,
+          city: null
+        },
+        isToday: this.dayItem.isToday
+      }
+    });
+  }
+
+  openDeleteAllDialog() {
+    this.matDialog.open(DeleteAllRemidersDialogComponent, {
+      minWidth: '360px',
+      panelClass: 'calendar-dialog',
+      data: {
+        remindersIds: this.reminders.map(reminder => reminder.id),
+        day: this.dayItem.date
       }
     });
   }
@@ -72,7 +91,9 @@ export class DayItemComponent implements OnInit {
     CommonModule,
     MatDialogModule,
     EditReminderDialogModule,
-    ReminderListModule
+    ReminderListModule,
+    MatIconModule,
+    DeleteAllRemidersDialogModule
   ],
   exports: [
     DayItemComponent
@@ -81,7 +102,8 @@ export class DayItemComponent implements OnInit {
     DayItemComponent
   ],
   entryComponents: [
-    EditReminderDialogComponent
+    EditReminderDialogComponent,
+    DeleteAllRemidersDialogComponent
   ]
 })
 export class DayItemModule {}
