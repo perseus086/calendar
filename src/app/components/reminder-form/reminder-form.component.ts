@@ -112,7 +112,6 @@ export class ReminderFormComponent implements OnInit, OnDestroy {
     this.onDestroy$.complete();
   }
 
-
   get formText() { return this.reminderForm.get('text'); }
   get formDay() { return this.reminderForm.get('day'); }
   get formTime() { return this.reminderForm.get('time'); }
