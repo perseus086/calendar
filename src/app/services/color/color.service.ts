@@ -3,20 +3,48 @@ import { Color } from 'src/app/models';
 
 const colors = [
   {
-    label: 'Orange',
-    value: 'orange'
+    label: 'Medium Violet Red	',
+    value: 'mediumvioletred	'
   },
   {
-    label: 'Lawngreen',
-    value: 'lawngreen'
+    label: 'Orange Red',
+    value: 'orangered'
+  },
+  {
+    label: 'Peach Puff',
+    value: 'peachpuff'
+  },
+  {
+    label: 'Magenta	',
+    value: 'magenta	'
+  },
+  {
+    label: 'Medium Purple	',
+    value: 'mediumpurple	'
+  },
+  {
+    label: 'Chartreuse	',
+    value: 'chartreuse	'
+  },
+  {
+    label: 'Pale Green	',
+    value: 'palegreen	'
+  },
+  {
+    label: 'Spring Green',
+    value: 'springgreen'
   },
   {
     label: 'Turquoise',
     value: 'turquoise'
   },
   {
-    label: 'Blue',
-    value: 'blue'
+    label: 'Deep Sky Blue',
+    value: 'deepskyblue'
+  },
+  {
+    label: 'Cornflower Blue',
+    value: 'cornflowerblue'
   },
   {
     label: 'Satan grey',

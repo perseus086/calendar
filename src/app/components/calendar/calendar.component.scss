@@ -2,6 +2,7 @@ table {
   border-collapse: collapse;
   width: 100%;
   table-layout: fixed;
+  font-family: monospace;
   
   th, td {
     border-width: 1px;
@@ -16,5 +17,7 @@ table {
 
   th {
     height: 20px;
+    color: white;
+    background-color: blue;
   }
  }
