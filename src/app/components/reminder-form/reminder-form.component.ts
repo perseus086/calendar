@@ -15,7 +15,6 @@ import { ColorService, DateService, UtilitiesService } from 'src/app/services';
 import { debounceTime, takeUntil, map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { ForecastService } from 'src/app/services/forecast/forecast.service';
-import { HttpClient } from '@angular/common/http';
 import { WeatherModule } from '../weather/weather.component';
 
 const { compose, required, maxLength } = Validators;
@@ -26,7 +25,6 @@ const { compose, required, maxLength } = Validators;
   styleUrls: ['./reminder-form.component.scss']
 })
 export class ReminderFormComponent implements OnInit, OnDestroy {
-
 
   @Input() reminder: Reminder;
   @Input() isToday: boolean;
@@ -71,8 +69,7 @@ export class ReminderFormComponent implements OnInit, OnDestroy {
           takeUntil(this.onDestroy$),
           debounceTime(500)
         )
-        .subscribe(
-          city => {
+        .subscribe(city => {
             if (city) {
               this.forecastService.getTodayWeatherByCity(city)
                 .pipe(

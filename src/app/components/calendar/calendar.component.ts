@@ -60,8 +60,9 @@ export class CalendarComponent implements OnInit {
 
   createForm() {
     this.date = this.formBuilder.control({
-      value: new Date()
+      value: new Date(),
     });
+    this.date.setValue(new Date());
   }
 
   setCellItemsAndRows() {
@@ -76,6 +77,7 @@ export class CalendarComponent implements OnInit {
   chosenMonthHandler(month: Date, datePicker) {
     this.date.setValue(month);
     this.calendarDate = this.date.value;
+    this.actualDate = this.calendarDate;
     this.setCellItemsAndRows();
     datePicker.close();
   }

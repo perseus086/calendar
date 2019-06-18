@@ -1,9 +1,10 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
-import { ReminderFormComponent } from './reminder-form.component';
+import { ReminderFormComponent, ReminderFormModule } from './reminder-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+
 
 describe('ReminderFormComponent', () => {
   let component: ReminderFormComponent;
@@ -11,18 +12,35 @@ describe('ReminderFormComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReminderFormComponent ]
+      imports: [
+        ReminderFormModule,
+        BrowserAnimationsModule,
+        HttpClientTestingModule
+      ]
     })
     .compileComponents();
   }));
 
-  beforeEach(() => {
+  it('should create', () => {
     fixture = TestBed.createComponent(ReminderFormComponent);
     component = fixture.componentInstance;
+    component.reminder = {
+      text: null,
+      id: null,
+      city: null,
+      date: new Date(),
+      color: null
+    };
+    component.ngOnInit();
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+  it('should set the form invalid if text is longer than 30 chars', () => {
+    
+  })
+
+
+
 });

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, NgModule } from '@angular/core';
 import { Reminder } from 'src/app/models';
 import { CommonModule } from '@angular/common';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatDialogModule } from '@angular/material';
 import { EditReminderDialogComponent } from '../edit-reminder-dialog/edit-reminder-dialog.component';
 
 @Component({
@@ -24,7 +24,9 @@ export class ReminderListComponent implements OnInit {
     this.matDialog.open(EditReminderDialogComponent, {
       minWidth: '360px',
       panelClass: 'calendar-dialog',
-      data: reminder
+      data: {
+        reminder
+      }
     });
   }
 }
@@ -32,7 +34,8 @@ export class ReminderListComponent implements OnInit {
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatDialogModule
   ],
   exports: [
     ReminderListComponent

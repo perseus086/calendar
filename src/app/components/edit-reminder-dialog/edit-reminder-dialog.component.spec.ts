@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { EditReminderDialogComponent } from './edit-reminder-dialog.component';
 
-describe('EditReminderDialogComponent', () => {
+xdescribe('EditReminderDialogComponent', () => {
   let component: EditReminderDialogComponent;
   let fixture: ComponentFixture<EditReminderDialogComponent>;
 

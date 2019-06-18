@@ -1,9 +1,7 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
-import { ReminderListComponent } from './reminder-list.component';
+import { ReminderListComponent, ReminderListModule } from './reminder-list.component';
 
 describe('ReminderListComponent', () => {
   let component: ReminderListComponent;
@@ -11,7 +9,9 @@ describe('ReminderListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReminderListComponent ]
+      imports: [
+        ReminderListModule
+      ]
     })
     .compileComponents();
   }));
