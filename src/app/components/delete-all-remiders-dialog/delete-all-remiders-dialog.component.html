@@ -1,8 +1,9 @@
-<div>
+<div class="delete-all-dialog">
   <p>Are you sure you want to delete {{ remindersToDeleteIds.length }} notifications</p>
   <p>corresponding to day {{ date | date:'longDate' }}</p>
   <div class="actions">
     <button
+    class="delete-all-button"
       mat-flat-button
       color="primary"
       (click)="deleteAll()"

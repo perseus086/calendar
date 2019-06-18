@@ -1,0 +1,16 @@
+.delete-all-dialog {
+  padding: 20px;
+}
+.actions {
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+
+  button {
+    border-radius: 0;
+  }
+
+  .delete-all-button {
+    margin-right: 10px;
+  }
+}
