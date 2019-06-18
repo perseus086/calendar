@@ -1,0 +1,11 @@
+<div>
+  <div *ngFor="let reminder of reminders">
+    <div
+      (click)="openEditDialog(reminder)"
+      class="reminder-item"
+      [ngStyle]="{ 'background-color': reminder.color }"
+    >
+      {{ reminder.text }}
+    </div>
+  </div>
+</div>

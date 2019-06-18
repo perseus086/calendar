@@ -11,6 +11,7 @@ import {
 import { FormsModule, FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { DateService } from 'src/app/services';
 import { DayItemModule } from '../day-item/day-item.component';
+import { ReminderFormModule } from '../reminder-form/reminder-form.component';
 
 export const MONTH_YEAR_FORMAT = {
   parse: {
@@ -92,7 +93,10 @@ export class CalendarComponent implements OnInit {
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    DayItemModule
+    DayItemModule,
+
+
+    ReminderFormModule
   ],
   exports: [
     CalendarComponent

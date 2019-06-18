@@ -77,4 +77,16 @@ export class DateService {
     return date1.getDate() === date2.getDate() && date1.getMonth() === date2.getMonth() && date1.getFullYear() === date2.getFullYear();
   }
 
+
+  mergeDayAndHour(day: Date, hoursAndMinutes: string): Date {
+    const hour = parseInt(hoursAndMinutes.split(':')[0], 10);
+    const minutes = parseInt(hoursAndMinutes.split(':')[1], 10);
+    day.setHours(hour, minutes);
+    return day;
+  }
+
+  getTimeFromDate(date: Date): string {
+    return date.toTimeString().split(' ')[0];
+  }
+
 }

@@ -1,0 +1,53 @@
+$top-bar-height: 30px;
+
+:host {
+  display: block;
+  font-size: 1rem;
+}
+
+.top-bar {
+  width: calc(100% - 20px);
+  height: $top-bar-height;
+  color: white;
+  display: flex;
+  line-height: $top-bar-height;
+  padding-left: 20px;
+}
+
+.reminder-form {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 20px;
+}
+
+.inline-inputs {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.date-picker-input {
+  margin-right: 10px;
+}
+
+.error-message {
+  color: #ed1c24;
+  font-size: 0.7rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 6px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  height: 35px;
+  padding: 10px 20px;
+
+  button {
+    border-radius: 0;
+  }
+
+  .save-button {
+    margin-right: 10px;
+  }
+}

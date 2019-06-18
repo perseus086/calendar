@@ -1,11 +1,19 @@
 table {
   border-collapse: collapse;
+  width: 100%;
+  table-layout: fixed;
+  
   th, td {
     border-width: 1px;
     border-style: solid;
     border-color: #000000;
-    width: 200px;
+    width: 14.28%;
     height: 100px;
     vertical-align: top;
+    padding: 0;
+  }
+
+  th {
+    height: 20px;
   }
  }

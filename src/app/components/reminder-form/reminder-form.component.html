@@ -1,0 +1,103 @@
+<div class="top-bar" [ngStyle]="{ 'background-color': formColor.value ? formColor.value : 'blue' }">
+  Calendar
+</div>
+
+<form [formGroup]="reminderForm" class="reminder-form">
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Add reminder"
+      formControlName="text">
+  </mat-form-field>
+  <div class="error-message" *ngIf="formText.errors && formText.errors.required && (formText.dirty || formText.touched)">
+    Reminder is required
+  </div>
+  <div class="error-message" *ngIf="formText.errors && formText.errors.maxlength && (formText.dirty || formText.touched)">
+    Maximum length of reminder is 30 characters
+  </div>
+
+  <div class="inline-inputs">
+    <div class="date-picker-input">
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Day"
+          formControlName="day"
+          [matDatepicker]="picker"
+        >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      </mat-form-field>
+      <mat-datepicker #picker></mat-datepicker>
+    </div>
+
+    <mat-form-field>
+        <input
+          matInput
+          placeholder="Time"
+          type="time"
+          formControlName="time"
+        >
+      </mat-form-field>
+  </div>
+
+  <div class="error-message" *ngIf="formDay.errors && formDay.errors.required && (formDay.dirty || formDay.touched)">
+    Day is required
+  </div>
+  <div class="error-message" *ngIf="formDay.errors && formDay.errors.matDatepickerParse && (formDay.dirty || formDay.touched)">
+    Day has an invalid format
+  </div>
+  <div class="error-message" *ngIf="formTime.errors && formTime.errors.required && (formTime.dirty || formTime.touched)">
+    Time is required
+  </div>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="City"
+      formControlName="city">
+  </mat-form-field>
+  <div class="error-message" *ngIf="formCity.errors && formCity.errors.required && (formCity.dirty || formCity.touched)">
+    City is required
+  </div>
+
+  <mat-form-field>
+    <mat-select formControlName="color" placeholder="Color">
+      <mat-option *ngFor="let colorItem of colors" [value]="colorItem.value">
+        {{ colorItem.label }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="error-message" *ngIf="formColor.errors && formColor.errors.required && (formColor.dirty || formColor.touched)">
+    Color is required
+  </div>
+
+</form>
+
+
+<div class="actions">
+  <button
+    mat-flat-button
+    color="primary"
+    class="save-button"
+    (click)="save()"
+    [disabled]="reminderForm.invalid"
+  >
+    Save
+  </button>
+  <button
+    mat-stroked-button
+    (click)="discard()"
+  >
+    Discard
+  </button>
+
+  <button
+    *ngIf="reminder.id"
+    mat-stroked-button
+    (click)="delete()"
+  >
+    Delete this reminder
+  </button>
+
+</div>

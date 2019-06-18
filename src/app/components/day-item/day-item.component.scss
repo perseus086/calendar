@@ -14,3 +14,15 @@
   color: grey;
 }
 
+.day-cell-number-section {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-left: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s linear;
+  margin-bottom: 5px;
+  
+  &:hover {
+    background-color: rgba(247, 221, 104, 0.534);
+  }
+}

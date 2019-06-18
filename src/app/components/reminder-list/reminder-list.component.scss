@@ -1,0 +1,9 @@
+.reminder-item {
+  font-size: 0.8rem;
+  padding-left: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s linear;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
