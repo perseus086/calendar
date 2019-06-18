@@ -1,7 +1,8 @@
-import { Component, OnInit, NgModule, Input } from '@angular/core';
+import { Component, NgModule, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Weather } from 'src/app/models';
 import { environment } from '../../../environments/environment';
+
+import { Weather } from 'src/app/models';
 
 @Component({
   selector: 'app-weather',

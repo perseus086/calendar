@@ -1,11 +1,12 @@
 import { Component, OnInit, NgModule, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DayItem, Reminder } from 'src/app/models';
-import { DateItemService, ReminderListService } from 'src/app/services';
 import { MatDialog, MatDialogModule, MatIconModule } from '@angular/material';
-import { EditReminderDialogComponent, EditReminderDialogModule } from '../edit-reminder-dialog/edit-reminder-dialog.component';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+
+import { DayItem, Reminder } from 'src/app/models';
+import { DateItemService, ReminderListService } from 'src/app/services';
+import { EditReminderDialogComponent, EditReminderDialogModule } from '../edit-reminder-dialog/edit-reminder-dialog.component';
 import { ReminderListModule } from '../reminder-list/reminder-list.component';
 import {
   DeleteAllRemidersDialogComponent,

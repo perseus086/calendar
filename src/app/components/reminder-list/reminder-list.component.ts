@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, NgModule } from '@angular/core';
-import { Reminder } from 'src/app/models';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material';
+
+import { Reminder } from 'src/app/models';
 import { EditReminderDialogComponent } from '../edit-reminder-dialog/edit-reminder-dialog.component';
 
 @Component({
@@ -9,16 +10,11 @@ import { EditReminderDialogComponent } from '../edit-reminder-dialog/edit-remind
   templateUrl: './reminder-list.component.html',
   styleUrls: ['./reminder-list.component.scss']
 })
-export class ReminderListComponent implements OnInit {
+export class ReminderListComponent {
 
   @Input() reminders: Reminder[];
 
-  constructor(
-    private matDialog: MatDialog
-  ) { }
-
-  ngOnInit() {
-  }
+  constructor(private matDialog: MatDialog) { }
 
   openEditDialog(reminder) {
     this.matDialog.open(EditReminderDialogComponent, {

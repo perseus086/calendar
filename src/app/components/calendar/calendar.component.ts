@@ -5,33 +5,19 @@ import {
   MatFormFieldModule,
   MatNativeDateModule,
   MatInputModule,
-  MatButtonModule,
-  MAT_DATE_FORMATS
+  MatButtonModule
 } from '@angular/material';
 import { FormsModule, FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
+
 import { DateService } from 'src/app/services';
 import { DayItemModule } from '../day-item/day-item.component';
 import { ReminderFormModule } from '../reminder-form/reminder-form.component';
 
-export const MONTH_YEAR_FORMAT = {
-  parse: {
-    dateInput: 'MM/YYYY',
-  },
-  display: {
-    dateInput: 'MM/YYYY',
-    monthYearLabel: 'MMM YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY',
-  },
-};
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss'],
-  providers: [
-    { provide: MAT_DATE_FORMATS, useValue: MONTH_YEAR_FORMAT },
-  ]
 })
 export class CalendarComponent implements OnInit {
 
@@ -96,8 +82,6 @@ export class CalendarComponent implements OnInit {
     ReactiveFormsModule,
     MatInputModule,
     DayItemModule,
-
-
     ReminderFormModule
   ],
   exports: [

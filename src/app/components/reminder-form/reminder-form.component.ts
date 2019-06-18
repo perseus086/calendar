@@ -10,10 +10,11 @@ import {
   MatSelectModule,
   MatButtonModule
 } from '@angular/material';
-import { Color, Reminder, Weather } from 'src/app/models';
-import { ColorService, DateService, UtilitiesService } from 'src/app/services';
 import { debounceTime, takeUntil, map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+
+import { Color, Reminder, Weather } from 'src/app/models';
+import { ColorService, DateService, UtilitiesService } from 'src/app/services';
 import { ForecastService } from 'src/app/services/forecast/forecast.service';
 import { WeatherModule } from '../weather/weather.component';
 

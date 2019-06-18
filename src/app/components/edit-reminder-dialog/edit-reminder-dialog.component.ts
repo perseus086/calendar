@@ -1,7 +1,7 @@
 import { Component, OnInit, NgModule, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReminderFormModule } from '../reminder-form/reminder-form.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { ReminderFormModule } from '../reminder-form/reminder-form.component';
 import { Reminder } from 'src/app/models';
 import { ReminderListService } from 'src/app/services';
 

@@ -6,7 +6,7 @@ import { ReminderListService } from 'src/app/services';
 @Component({
   selector: 'app-delete-all-remiders-dialog',
   templateUrl: './delete-all-remiders-dialog.component.html',
-  styleUrls: ['./delete-all-remiders-dialog.component.css']
+  styleUrls: ['./delete-all-remiders-dialog.component.scss']
 })
 export class DeleteAllRemidersDialogComponent implements OnInit {
 
