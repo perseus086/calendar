@@ -23,6 +23,8 @@ export class EditReminderDialogComponent implements OnInit {
 
   ngOnInit() {
     this.reminder = this.data.reminder;
+    // Copy date on a dirty way
+    this.reminder.date = new Date('' + this.data.reminder.date);
     this.isToday = this.data.isToday;
   }
 

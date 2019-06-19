@@ -52,7 +52,10 @@ export class CalendarDayCellComponent implements OnInit {
                   reminder.date.getMonth() === this.dayCell.date.getMonth() &&
                   reminder.date.getDate() === this.dayCell.date.getDate();
         }
-      ))
+      )),
+      map(reminders => {
+        return reminders.sort((reminder1, reminder2) => (reminder1.date as any) - (reminder2.date as any) );
+      })
     )
     .subscribe(thisDayReminders => {
       this.reminders = thisDayReminders;
