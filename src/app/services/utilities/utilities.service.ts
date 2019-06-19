@@ -7,6 +7,7 @@ export class UtilitiesService {
 
 constructor() { }
 
+  // From: https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
   uuidv4() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
       // tslint:disable-next-line:no-bitwise

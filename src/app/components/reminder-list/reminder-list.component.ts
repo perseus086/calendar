@@ -16,7 +16,7 @@ export class ReminderListComponent {
 
   constructor(private matDialog: MatDialog) { }
 
-  openEditDialog(reminder) {
+  openEditDialog(reminder: Reminder) {
     this.matDialog.open(EditReminderDialogComponent, {
       minWidth: '360px',
       panelClass: 'calendar-dialog',

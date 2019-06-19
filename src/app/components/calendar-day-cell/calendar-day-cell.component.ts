@@ -38,6 +38,7 @@ export class CalendarDayCellComponent implements OnInit {
 
   ngOnInit() {
     this.dayCell = this.dayCellService.getDayCellFromDate(this.date, this.hasMonth, this.actualDate);
+
     this.reminderList$ = this.reminderListService.getReminderList();
     this.subscribeToReminderList();
   }
@@ -53,8 +54,8 @@ export class CalendarDayCellComponent implements OnInit {
         }
       ))
     )
-    .subscribe(reminders => {
-      this.reminders = reminders;
+    .subscribe(thisDayReminders => {
+      this.reminders = thisDayReminders;
     });
   }
 
