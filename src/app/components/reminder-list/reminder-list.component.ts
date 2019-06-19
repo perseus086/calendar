@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, NgModule } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatDialog, MatDialogModule } from '@angular/material';
 

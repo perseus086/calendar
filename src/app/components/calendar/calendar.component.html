@@ -20,12 +20,12 @@
     <tbody>
       <tr *ngFor="let row of Arr(rows).fill(1); let i = index;">
         <td *ngFor="let item of cellItems[i]; let j = index;">
-          <app-day-item
+          <app-calendar-day-cell
             [date]="item"
             [hasMonth]="!!(i===0 && j===0)"
-            [actualDate]="actualDate"
+            [actualDate]="selectedDate"
           >
-          </app-day-item>
+          </app-calendar-day-cell>
         </td>
       </tr>
     </tbody>

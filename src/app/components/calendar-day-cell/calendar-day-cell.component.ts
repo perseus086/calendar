@@ -4,8 +4,8 @@ import { MatDialog, MatDialogModule, MatIconModule } from '@angular/material';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { DayItem, Reminder } from 'src/app/models';
-import { DateItemService, ReminderListService } from 'src/app/services';
+import { DayCell, Reminder } from 'src/app/models';
+import { DayCellService, ReminderListService } from 'src/app/services';
 import { EditReminderDialogComponent, EditReminderDialogModule } from '../edit-reminder-dialog/edit-reminder-dialog.component';
 import { ReminderListModule } from '../reminder-list/reminder-list.component';
 import {
@@ -15,11 +15,11 @@ import {
 
 
 @Component({
-  selector: 'app-day-item',
-  templateUrl: './day-item.component.html',
-  styleUrls: ['./day-item.component.scss']
+  selector: 'app-calendar-day-cell',
+  templateUrl: './calendar-day-cell.component.html',
+  styleUrls: ['./calendar-day-cell.component.scss']
 })
-export class DayItemComponent implements OnInit {
+export class CalendarDayCellComponent implements OnInit {
 
   @Input() date: Date;
   @Input() today: Date;
@@ -28,16 +28,16 @@ export class DayItemComponent implements OnInit {
 
   reminderList$: Observable<Reminder[]>;
   reminders: Reminder[] = [];
-  dayItem: DayItem;
+  dayCell: DayCell;
 
   constructor(
-    private dayItemService: DateItemService,
+    private dayCellService: DayCellService,
     private matDialog: MatDialog,
     private reminderListService: ReminderListService
   ) { }
 
   ngOnInit() {
-    this.dayItem = this.dayItemService.getDateItemFromDate(this.date, this.hasMonth, this.actualDate);
+    this.dayCell = this.dayCellService.getDayCellFromDate(this.date, this.hasMonth, this.actualDate);
     this.reminderList$ = this.reminderListService.getReminderList();
     this.subscribeToReminderList();
   }
@@ -47,9 +47,9 @@ export class DayItemComponent implements OnInit {
     .pipe(
       map(reminders => reminders.filter(
         reminder => {
-          return  reminder.date.getFullYear() === this.dayItem.date.getFullYear() &&
-                  reminder.date.getMonth() === this.dayItem.date.getMonth() &&
-                  reminder.date.getDate() === this.dayItem.date.getDate();
+          return  reminder.date.getFullYear() === this.dayCell.date.getFullYear() &&
+                  reminder.date.getMonth() === this.dayCell.date.getMonth() &&
+                  reminder.date.getDate() === this.dayCell.date.getDate();
         }
       ))
     )
@@ -65,11 +65,11 @@ export class DayItemComponent implements OnInit {
       data: {
         reminder: {
           text: null,
-          date: this.dayItem.date,
+          date: this.dayCell.date,
           color: null,
           city: null
         },
-        isToday: this.dayItem.isToday
+        isToday: this.dayCell.isToday
       }
     });
   }
@@ -80,7 +80,7 @@ export class DayItemComponent implements OnInit {
       panelClass: 'calendar-dialog',
       data: {
         remindersIds: this.reminders.map(reminder => reminder.id),
-        day: this.dayItem.date
+        day: this.dayCell.date
       }
     });
   }
@@ -97,14 +97,14 @@ export class DayItemComponent implements OnInit {
     DeleteAllRemidersDialogModule
   ],
   exports: [
-    DayItemComponent
+    CalendarDayCellComponent
   ],
   declarations: [
-    DayItemComponent
+    CalendarDayCellComponent
   ],
   entryComponents: [
     EditReminderDialogComponent,
     DeleteAllRemidersDialogComponent
   ]
 })
-export class DayItemModule {}
+export class CalendarDayCellModule {}

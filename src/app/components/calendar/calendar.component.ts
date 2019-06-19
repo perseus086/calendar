@@ -10,8 +10,8 @@ import {
 import { FormsModule, FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 import { DateService } from 'src/app/services';
-import { DayItemModule } from '../day-item/day-item.component';
 import { ReminderFormModule } from '../reminder-form/reminder-form.component';
+import { CalendarDayCellModule } from '../calendar-day-cell/calendar-day-cell.component';
 
 
 @Component({
@@ -22,8 +22,7 @@ import { ReminderFormModule } from '../reminder-form/reminder-form.component';
 export class CalendarComponent implements OnInit {
 
   date: FormControl;
-  calendarDate: Date;
-  actualDate: Date;
+  selectedDate: Date;
   weekdayLabels: string[];
 
   cellItems: Date[][];
@@ -38,8 +37,8 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     this.createForm();
-    this.actualDate = new Date();
-    this.calendarDate = this.actualDate;
+    // Initialize with today
+    this.selectedDate = new Date();
     this.weekdayLabels = this.dateService.getDaysOfTheWeekList();
     this.setCellItemsAndRows();
   }
@@ -52,7 +51,7 @@ export class CalendarComponent implements OnInit {
   }
 
   setCellItemsAndRows() {
-    this.cellItems = this.dateService.getDaysForCalendar(this.calendarDate);
+    this.cellItems = this.dateService.getDaysForCalendar(this.selectedDate);
     this.rows = this.cellItems.length;
   }
 
@@ -62,8 +61,7 @@ export class CalendarComponent implements OnInit {
 
   chosenMonthHandler(month: Date, datePicker) {
     this.date.setValue(month);
-    this.calendarDate = this.date.value;
-    this.actualDate = this.calendarDate;
+    this.selectedDate = this.date.value;
     this.setCellItemsAndRows();
     datePicker.close();
   }
@@ -81,7 +79,7 @@ export class CalendarComponent implements OnInit {
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-    DayItemModule,
+    CalendarDayCellModule,
     ReminderFormModule
   ],
   exports: [

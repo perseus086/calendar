@@ -1,4 +1,4 @@
-export interface DayItem {
+export interface DayCell {
   date: Date;
   isToday: boolean;
   hasMonth: boolean;

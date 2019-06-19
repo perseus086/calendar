@@ -1,8 +1,8 @@
-<div class="top-border" [ngClass]="{ 'border-with-color': dayItem.isToday }"></div>
+<div class="top-border" [ngClass]="{ 'border-with-color': dayCell.isToday }"></div>
 <div class="top-section">
-  <div [ngClass]="{ 'is-weekend': dayItem.isWeekend, 'is-opaque': !dayItem.isInActualMonth }">
+  <div [ngClass]="{ 'is-weekend': dayCell.isWeekend, 'is-opaque': !dayCell.isInActualMonth }">
     <div (click)="openNotificationDialog()" class="day-cell-number-section">
-      {{ dayItem.day }}
+      {{ dayCell.day }}
     </div>
   </div>
 </div>

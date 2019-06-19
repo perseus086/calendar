@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
-import { DayItem } from 'src/app/models';
+import { DayCell } from 'src/app/models';
 import { DateService } from '../date/date.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DateItemService {
+export class DayCellService {
 
 constructor(private dateService: DateService) { }
 
-  getDateItemFromDate(date: Date, hasMonth: boolean, actualDate: Date): DayItem {
+  getDayCellFromDate(date: Date, hasMonth: boolean, actualDate: Date): DayCell {
     return {
       date,
       hasMonth: hasMonth || date.getDate() === 1,

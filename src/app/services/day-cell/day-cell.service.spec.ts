@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { DateItemService } from './date-item.service';
+import { DayCellService } from './day-cell.service';
 
 describe('Service: DateItem', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DateItemService]
+      providers: [DayCellService]
     });
   });
 
-  it('should ...', inject([DateItemService], (service: DateItemService) => {
+  it('should ...', inject([DayCellService], (service: DayCellService) => {
     expect(service).toBeTruthy();
   }));
 });

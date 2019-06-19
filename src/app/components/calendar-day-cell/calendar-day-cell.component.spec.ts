@@ -1,19 +1,17 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
-import { DayItemComponent, DayItemModule } from './day-item.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarDayCellComponent, CalendarDayCellModule } from './calendar-day-cell.component';
 
-describe('DayItemComponent', () => {
-  let component: DayItemComponent;
-  let fixture: ComponentFixture<DayItemComponent>;
+describe('CalendarDayCellComponent', () => {
+  let component: CalendarDayCellComponent;
+  let fixture: ComponentFixture<CalendarDayCellComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        DayItemModule,
+        CalendarDayCellModule,
         BrowserAnimationsModule
        ]
     })
@@ -21,7 +19,7 @@ describe('DayItemComponent', () => {
   }));
 
   it('should create', () => {
-    fixture = TestBed.createComponent(DayItemComponent);
+    fixture = TestBed.createComponent(CalendarDayCellComponent);
     component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
